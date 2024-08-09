@@ -20,11 +20,10 @@
             line-height: 1.6;
             overflow-x: hidden;
             color: #fff; /* Change default font color to white */
-            background-image: url('imamaK.jpg'); /* Replace with your image URL */
+            background-image: url('imamaK.jpg'); /* New background image */
             background-size: cover; /* Ensure the image covers the entire viewport */
             background-position: center;
-            height: 100vh; /* Set body height to 100% of viewport height */
-            width: 100%; /* Set body width to 100% */
+            min-height: 100vh; /* Ensure minimum height covers the entire viewport */
         }
 
         header {
@@ -63,7 +62,7 @@
 
         .container {
             max-width: 1200px;
-            margin: 120px auto 0;
+            margin: 80px auto 0;
             padding: 0 20px;
         }
 
@@ -71,19 +70,19 @@
             padding: 50px;
             border-radius: 10px;
             text-align: center;
-            margin-top: 50vh; /* Move it below the fold */
+            margin-top: 200px; /* Reduce the margin to lower the content */
             transform: translateY(-50%);
         }
 
         .jumbotron h1 {
-            font-size: 4em;
+            font-size: 3em; /* Adjust font size to reduce height */
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 2px;
         }
 
         .jumbotron p {
-            font-size: 1.5em;
+            font-size: 1.2em; /* Adjust font size to reduce height */
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -91,7 +90,7 @@
         .under-construction {
             padding: 20px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px; /* Adjust the margin top */
             border-radius: 5px;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
         }
