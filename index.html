@@ -1,228 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monowar Husain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cambria&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Monowar Husain Omi - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Reset default styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: Cambria, Georgia, serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            color: #fff; /* Change default font color to white */
-            background-image: url('imamaK.jpg'); /* New background image */
-            background-size: cover; /* Ensure the image covers the entire viewport */
-            background-position: center;
-            min-height: 100vh; /* Ensure minimum height covers the entire viewport */
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* fallback color */
+            background-image:
+                linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                radial-gradient(ellipse at center, rgba(15, 23, 42, 0) 0%, #020617 100%),
+                linear-gradient(90deg, rgba(30, 41, 59, 0.2) 1px, transparent 1px),
+                linear-gradient(rgba(30, 41, 59, 0.2) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+            position: relative;
         }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Cursor Spotlight Effect */
+        body::before {
+            content: '';
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            z-index: 1000;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(
+                circle 400px at var(--x, 50%) var(--y, 50%),
+                rgba(34, 211, 238, 0.15),
+                transparent 80%
+            );
+            z-index: 1;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            letter-spacing: 2px;
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        nav {
-            background-color: #333;
-            padding: 10px 0;
-            text-align: center;
+        .gradient-text {
+            background: linear-gradient(to right, #22d3ee, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            letter-spacing: 1px;
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        nav a:hover {
-            background-color: #555;
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 80px auto 0;
-            padding: 0 20px;
+        
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4), 0 0 8px rgba(34, 211, 238, 0.3);
         }
-
-        .jumbotron {
-            padding: 50px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 200px; /* Reduce the margin to lower the content */
-            transform: translateY(-50%);
-        }
-
-        .jumbotron h1 {
-            font-size: 3em; /* Adjust font size to reduce height */
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-        }
-
-        .jumbotron p {
-            font-size: 1.2em; /* Adjust font size to reduce height */
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .under-construction {
-            padding: 20px;
-            text-align: center;
-            margin-top: 20px; /* Adjust the margin top */
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        }
-
-        .under-construction p {
-            color: #fff; /* Change font color to white */
-        }
-
-        .social-icons {
-            margin-top: 20px; /* Adjust the margin top */
-            text-align: center;
-            color: #fff; /* Change font color to white */
-        }
-
-        .social-icons a {
-            color: #fff; /* Change icon color to white */
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #3498db;
-        }
-
-        .contact-email {
-            margin-top: 20px; /* Adjust the margin top */
-            text-align: center;
-            color: #fff; /* Change font color to white */
-        }
-
-        .contact-email p {
-            font-size: 1.2em;
-        }
-
-        .contact-email a {
-            color: #fff; /* Change font color to white */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-email a:hover {
-            color: #3498db;
-        }
-
-        .photo-credit {
-            margin-top: 10px; /* Adjust the margin top */
-            text-align: center;
-            color: #fff; /* Change font color to white */
-            font-size: 0.9em; /* Make the font size smaller */
-        }
-
-        .photo-credit a {
-            color: #fff; /* Change link color to white */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .photo-credit a:hover {
-            color: #3498db;
-        }
-
-        .developer-info {
-            margin-top: 20px; /* Adjust the margin top */
-            font-size: 1.2em;
-            text-align: center;
-            color: #fff; /* Change font color to white */
-        }
-
-        .developer-info a {
-            color: #fff; /* Change font color to white */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .developer-info a:hover {
-            color: #3498db;
-        }
-
-        footer {
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
+        
+        header, main, footer {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
-<body>
+<body class="text-gray-300">
 
-    <nav>
-        <!-- <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Contact</a> -->
-<nav>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <!-- Add more links if necessary -->
-</nav>
+    <!-- Header & Navigation -->
+    <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold text-white">Monowar Husain Omi</a>
+            <div class="hidden md:flex space-x-6 text-lg">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#research" class="hover:text-cyan-400 transition-colors">Research</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#courses" class="hover:text-cyan-400 transition-colors">Courses</a>
+                <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 hover:text-cyan-400 transition-colors">About</a>
+            <a href="#experience" class="block py-2 hover:text-cyan-400 transition-colors">Experience</a>
+            <a href="#research" class="block py-2 hover:text-cyan-400 transition-colors">Research</a>
+            <a href="#projects" class="block py-2 hover:text-cyan-400 transition-colors">Projects</a>
+            <a href="#courses" class="block py-2 hover:text-cyan-400 transition-colors">Courses</a>
+            <a href="#certifications" class="block py-2 hover:text-cyan-400 transition-colors">Certifications</a>
+            <a href="#contact" class="block py-2 hover:text-cyan-400 transition-colors">Contact</a>
+        </div>
+    </header>
 
-    </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Welcome to MONOWAR HUSAIN</h1>
-            <p>This site is currently under construction. Stay tuned for updates!</p>
-        </div>
-        <div class="under-construction">
-            <p>This website is currently under construction. Please excuse the mess while we work on it.</p>
-        </div>
-    </div>
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://github.com/MonowarHusain" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/MonowarHusain" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/MonowarHusain" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://blog.monowar.me/" target="_blank"><i class="fab fa-blogger"></i></a>
-                <a href="https://www.youtube.com/@monowar_rior" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.facebook.com/master.iMono" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/monowaromi/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://discord.com/users/983179850359636028" target="_blank"><i class="fab fa-discord"></i></a>
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-[80vh] flex flex-col justify-center items-center text-center overflow-hidden">
+            <div id="particles-js" class="absolute inset-0 z-0"></div>
+            <div class="relative z-10 max-w-4xl">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                    <span class="gradient-text">Monowar Husain Omi</span>
+                </h1>
+                <p class="mt-4 text-lg sm:text-xl md:text-2xl text-cyan-400 font-medium">CS @ BRAC University | Lifelong Learner</p>
+                <p class="mt-6 text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+                    A passionate computer science student from Dhaka, Bangladesh, with a keen interest in software development, technology, and continuous learning.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#" download="Monowar_Husain_Resume.pdf" class="glow-on-hover inline-block bg-cyan-600 text-white text-lg px-8 py-3 rounded-lg hover:bg-cyan-700 transition-all duration-300 shadow-lg transform hover:scale-105">
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="glow-on-hover inline-block border-2 border-slate-700 text-white text-lg px-8 py-3 rounded-lg hover:bg-slate-800 hover:border-slate-600 transition-all duration-300">
+                        Get in Touch
+                    </a>
+                </div>
             </div>
-            <div class="contact-email">
-                <p>Contact Email: <a href="mailto:monowar@monowar.me">monowar@monowar.me</a></p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 sm:py-24 fade-in-section">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-lg text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">About Me</h2>
+                    <p class="mb-4 text-gray-400">
+                        I am a dedicated Computer Science and Mathematics student at BRAC University with a strong foundation in programming and problem-solving. My journey in tech is driven by a passion for building innovative solutions and a relentless curiosity to learn new things.
+                    </p>
+                    <p class="mb-4 text-gray-400">
+                        From founding a science club in high school to becoming a Microsoft Learn Student Ambassador, I've always been proactive in engaging with the tech community. I enjoy collaborating on projects, organizing educational activities, and sharing my knowledge with others.
+                    </p>
+                </div>
             </div>
-            <div class="photo-credit">
-                <p>Photo by <a href="https://www.facebook.com/imamakarim36/" target="_blank">Imama Karim</a></p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 sm:py-24 glass-card rounded-xl fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-16">Career Journey</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-cyan-500/50 pl-10 space-y-12">
+                    <div class="absolute -left-[11px] top-1 h-5 w-5 rounded-full bg-cyan-500 ring-4 ring-slate-900"></div>
+                    <div class="space-y-1 transition-all duration-300 hover:bg-slate-800/50 p-4 rounded-md">
+                        <p class="text-sm text-gray-400">February 2025 - Present</p>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white">Executive of HR</h3>
+                        <p class="text-lg text-gray-300">Brac University History Club (BUHC)</p>
+                        <ul class="list-disc pl-5 text-gray-400 mt-2">
+                            <li>Promoted from General Member of HR in August 2025.</li>
+                            <li>Responsible for managing club member activities and recruitment processes.</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -left-[11px] h-5 w-5 rounded-full bg-cyan-500 ring-4 ring-slate-900" style="top: 215px;"></div>
+                    <div class="space-y-1 transition-all duration-300 hover:bg-slate-800/50 p-4 rounded-md">
+                        <p class="text-sm text-gray-400">September 2024 - Present</p>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white">Microsoft Learn Student Ambassador</h3>
+                        <p class="text-lg text-gray-300">Microsoft</p>
+                    </div>
+                    <div class="absolute -left-[11px] h-5 w-5 rounded-full bg-cyan-500 ring-4 ring-slate-900" style="top: 330px;"></div>
+                    <div class="space-y-1 transition-all duration-300 hover:bg-slate-800/50 p-4 rounded-md">
+                        <p class="text-sm text-gray-400">March 2024 - Present</p>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white">Ambassador</h3>
+                        <p class="text-lg text-gray-300">International Astronomy and Astrophysics Competition</p>
+                    </div>
+                    <div class="absolute -left-[11px] h-5 w-5 rounded-full bg-cyan-500 ring-4 ring-slate-900" style="top: 445px;"></div>
+                    <div class="space-y-1 transition-all duration-300 hover:bg-slate-800/50 p-4 rounded-md">
+                        <p class="text-sm text-gray-400">October 2015 - February 2019</p>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-white">Founder Member</h3>
+                        <p class="text-lg text-gray-300">Faizur Rahman Ideal Institute Science Club</p>
+                    </div>
+                </div>
             </div>
-            <p class="developer-info">Developed by <a href="https://monowar.my.id">Monowar Husain</a></p>
-            <p style="text-align: center;">&copy; 2024 Monowar Husain. All rights reserved.</p>
+        </section>
+
+        <!-- Research Interests Section -->
+        <section id="research" class="py-16 sm:py-24 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-16">Research Interests</h2>
+            <div id="research-grid" class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4">
+                <!-- Research interests will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Foundational Projects Section -->
+        <section id="projects" class="py-16 sm:py-24 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4">Foundational Projects</h2>
+            <p class="text-center text-lg text-gray-400 max-w-2xl mx-auto mb-16">
+                Exploring key concepts through hands-on application. These projects represent my early steps in web development and problem-solving.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 glow-on-hover border border-slate-700">
+                    <img src="https://placehold.co/600x400/0f172a/7F9CF5?text=CGPA+Calculator" alt="BRACU CGPA Calculator" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">BRACU CGPA Calculator</h3>
+                        <p class="text-gray-400 mb-4">A web app for BRAC University students to easily calculate their CGPA and manage courses.</p>
+                        <a href="https://cgpacalc.monowar.me/" target="_blank" class="inline-block bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors">View Project</a>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 glow-on-hover border border-slate-700">
+                    <img src="https://placehold.co/600x400/0f172a/7F9CF5?text=Tic+Tac+Toe" alt="Tic Tac Toe Game" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Tic Tac Toe</h3>
+                        <p class="text-gray-400 mb-4">An interactive web-based Tic Tac Toe game with two difficulty modes against a computer AI.</p>
+                        <a href="https://tic-tac-toe.monowar.me/" target="_blank" class="inline-block bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors">View Project</a>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 glow-on-hover border border-slate-700">
+                    <img src="https://placehold.co/600x400/0f172a/7F9CF5?text=Real+Bangladesh" alt="Real Bangladesh Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Real Bangladesh</h3>
+                        <p class="text-gray-400 mb-4">A digital library of 72 curated books on Bangladesh's history, politics, and culture.</p>
+                        <a href="https://realbd.monowar.me/" target="_blank" class="inline-block bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition-colors">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Content Section -->
+        <section id="courses" class="py-16 sm:py-24 glass-card rounded-xl fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-16">Course Content</h2>
+            <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
+                <a href="#" target="_blank" class="block bg-slate-800/50 p-6 rounded-lg transition-all duration-300 glow-on-hover border border-slate-700 hover:border-cyan-400/50">
+                    <h3 class="text-xl font-bold text-white">CSE221: Algorithms</h3>
+                    <p class="text-gray-400 mt-2">View course materials and notes.</p>
+                </a>
+                <a href="#" target="_blank" class="block bg-slate-800/50 p-6 rounded-lg transition-all duration-300 glow-on-hover border border-slate-700 hover:border-cyan-400/50">
+                    <h3 class="text-xl font-bold text-white">CSE220: Data Structures</h3>
+                    <p class="text-gray-400 mt-2">View course materials and notes.</p>
+                </a>
+                <a href="#" target="_blank" class="block bg-slate-800/50 p-6 rounded-lg transition-all duration-300 glow-on-hover border border-slate-700 hover:border-cyan-400/50">
+                    <h3 class="text-xl font-bold text-white">CSE423: Computer Graphics</h3>
+                    <p class="text-gray-400 mt-2">View course materials and notes.</p>
+                </a>
+                 <!-- Add more courses as needed -->
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-16 sm:py-24 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-16">Licenses & Certifications</h2>
+            <div id="certifications-grid" class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+                <!-- Certificates will be dynamically inserted here -->
+            </div>
+            <div class="text-center mt-12">
+                <button id="view-more-certs" class="bg-slate-700 text-white px-6 py-3 rounded-lg hover:bg-slate-600 transition-colors">View More</button>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 sm:py-24 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-4">Get In Touch</h2>
+            <p class="text-center text-lg text-gray-400 max-w-2xl mx-auto mb-12">
+                Have a question or want to schedule a meeting? Leave your details and I'll get back to you.
+            </p>
+            <form name="contact" method="POST" data-netlify="true" class="max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                        <input type="text" name="name" id="name" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Your Email</label>
+                        <input type="email" name="email" id="email" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                    <input type="text" name="subject" id="subject" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                    <textarea name="message" id="message" rows="4" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+                </div>
+                <div class="mb-6 flex items-center">
+                    <input id="schedule-checkbox" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-600">
+                    <label for="schedule-checkbox" class="ml-2 block text-sm text-gray-400">I'd like to schedule a meeting</label>
+                </div>
+                <div id="schedule-fields" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-400 mb-2">Preferred Date</label>
+                        <input type="date" name="date" id="date" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    </div>
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-gray-400 mb-2">Preferred Time</label>
+                        <select name="time" id="time" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            <option>Morning (9am - 12pm)</option>
+                            <option>Afternoon (1pm - 5pm)</option>
+                            <option>Evening (6pm - 9pm)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="glow-on-hover inline-block bg-cyan-600 text-white text-xl px-8 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300 shadow-lg">
+                        Send Message
+                    </button>
+                </div>
+                 <p class="mt-8 text-center text-gray-500">Or email me directly at: <a href="mailto:monowarhusainomi@gmail.com" class="text-cyan-400 hover:underline">monowarhusainomi@gmail.com</a></p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="https://github.com/MonowarHusain" target="_blank" class="text-gray-400 hover:text-white transition-transform hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg></a>
+                <a href="https://www.linkedin.com/in/MonowarHusain" target="_blank" class="text-gray-400 hover:text-white transition-transform hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://twitter.com/MonowarHusain" target="_blank" class="text-gray-400 hover:text-white transition-transform hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                <a href="https://blog.monowar.me/" target="_blank" class="text-gray-400 hover:text-white transition-transform hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3.5 13.5H6.5V15H8v-1.5H6.5V12H8V10.5H6.5V9H11c2.21 0 4 1.79 4 4s-1.79 4-4 4h-1.5v1.5zm0-6h-3v1.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v1.5h3c1.66 0 3-1.34 3-3s-1.34-3-3-3z"/></svg></a>
+                 <a href="mailto:monowarhusainomi@gmail.com" target="_blank" class="text-gray-400 hover:text-white transition-transform hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+            </div>
+            <p>&copy; 2025 Monowar Husain Omi. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- CURSOR SPOTLIGHT ---
+            document.addEventListener('mousemove', (e) => {
+                document.body.style.setProperty('--x', `${e.clientX}px`);
+                document.body.style.setProperty('--y', `${e.clientY}px`);
+            });
+
+            // --- PARTICLES.JS CONFIG ---
+            particlesJS('particles-js', {
+              "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" } },
+              "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 100 }, "push": { "particles_nb": 4 } } },
+              "retina_detect": true
+            });
+
+            // --- RESEARCH INTERESTS LOGIC ---
+            const researchInterests = [
+                { name: 'Machine Learning', description: 'Developing algorithms that allow computers to learn from and make predictions or decisions based on data.' },
+                { name: 'Artificial Intelligence', description: 'Creating intelligent agents that can reason, learn, and act autonomously to solve complex problems.' },
+                { name: 'Convolutional Neural Networks', description: 'A class of deep neural networks, most commonly applied to analyzing visual imagery and image processing.' },
+                { name: 'Image Processing', description: 'Using algorithms to perform operations on an image in order to get an enhanced image or to extract some useful information from it.' },
+                { name: 'Natural Language Processing', description: 'Enabling computers to understand, interpret, and generate human language in a valuable way.' }
+            ];
+
+            const researchGrid = document.getElementById('research-grid');
+            if (researchGrid) {
+                researchInterests.forEach(item => {
+                    const researchCard = `
+                        <div class="research-card cursor-pointer bg-slate-800/50 p-6 rounded-lg transition-all duration-300 glow-on-hover border border-slate-700 hover:border-cyan-400/50 transform hover:-translate-y-1">
+                            <h3 class="text-xl font-bold text-white">${item.name}</h3>
+                            <p class="research-description hidden text-gray-400 mt-2 text-sm">${item.description}</p>
+                        </div>
+                    `;
+                    researchGrid.insertAdjacentHTML('beforeend', researchCard);
+                });
+
+                document.querySelectorAll('.research-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        card.querySelector('.research-description').classList.toggle('hidden');
+                    });
+                });
+            }
+
+            // --- CERTIFICATIONS LOGIC ---
+            const certificates = [
+                { title: 'ML Playbook: Foundations & Applications', issuer: 'IEEE Comsoc BRACU Student Branch Chapter', date: 'Mar 2025', url: '#', description: 'Gained valuable insights into machine learning, its role in telecommunications, and practical applications.' },
+                { title: 'MS Excel Basics for Beginners', issuer: 'Bohubrihi', date: 'Jun 2024', url: '#', description: 'Covered essential topics such as data entry, cell formatting, and basic data analysis techniques.', credentialId: '66720582726937986928c56a' },
+                { title: 'Problem Solving (Basic)', issuer: 'HackerRank', date: 'Jun 2024', url: '#', description: 'Completed challenges covering essential topics in Data Structures and Algorithms, including Arrays and Strings.' },
+                { title: 'Python (Basic)', issuer: 'HackerRank', date: 'Jun 2024', url: '#', description: 'This course encompassed fundamental topics such as Scalar Types, Operators, and Control Flow.', credentialId: 'BFEF65524CCC' },
+                { title: 'Presentation Skill', issuer: 'BRAC University', date: 'Apr 2023', url: '#', description: 'Successfully completed the course as part of my extracurricular activities at the Residential Campus.' },
+                { title: 'Skill Up 2.0', issuer: 'Brac University Pharma Society - BUPS', date: 'Nov 2022', url: '#', description: 'Recognizes participation in the "Skill Up 2.0" workshop, highlighting active involvement.' },
+                { title: 'World Water Day 2021 Campaign', issuer: 'UNICEF Bangladesh', date: 'Mar 2021', url: '#', description: 'Certificate for participation in the Valuing Water campaign.' },
+                { title: 'Business English', issuer: '10 Minute School', date: 'Aug 2020', url: '#', description: 'Learned key communication skills for professional environments.', credentialId: 'MC-Y704736A1153566S191W' },
+                { title: 'Covid-19 Awareness and Prevention', issuer: 'BRAC', date: 'Jun 2020', url: '#', description: 'Completed an online course on COVID-19 awareness and prevention.', credentialId: 'MC-H704736W1153713J238B' },
+                { title: 'English Fundamental', issuer: '10 Minute School', date: 'Jun 2020', url: '#', description: 'Completed an online course covering the fundamentals of the English language.', credentialId: 'MC-E704736U1153650K203Z' },
+                { title: 'Safer Internet for Children', issuer: 'UNICEF', date: 'Jun 2020', url: '#', description: 'Certified by the ICT Division and UNICEF Bangladesh on safe internet practices.' },
+                { title: 'Microsoft Word Basic', issuer: '10 Minute School', date: 'Apr 2020', url: '#', description: 'A course covering the basic functionalities of Microsoft Word.', credentialId: 'MC-F353730R552238Q150A' },
+                { title: 'Secondary 2 Young Learners', issuer: 'British Council', date: 'Apr 2019', url: '#', description: 'Successfully completed a 24-hour intensive course at the intermediate level.' },
+                { title: 'DRMC-Savlon National Science Carnival 2017', issuer: 'Dhaka Residential Model College (DRMC)', date: 'Feb 2017', url: '#', description: 'Participated in the national science carnival, fostering a passion for science and technology.' },
+                { title: 'Science Fair at Faizur Rahman Ideal Institute', issuer: 'Faizur Rahman Ideal Institute (FRII)', date: 'Mar 2016', url: '#', description: 'Recognized for outstanding participation in the yearly science fair.' }
+            ];
+
+            const certsGrid = document.getElementById('certifications-grid');
+            const viewMoreBtn = document.getElementById('view-more-certs');
+            const initialCertsToShow = 4;
+
+            if (certsGrid) {
+                function displayCertificates() {
+                    certsGrid.innerHTML = '';
+                    certificates.forEach((cert, i) => {
+                        const isHidden = i >= initialCertsToShow;
+                        const credentialHTML = cert.credentialId ? `<p class="mt-2 text-xs text-slate-500">Credential ID: ${cert.credentialId}</p>` : '';
+                        const certCardHTML = `
+                            <a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="block bg-slate-800/50 rounded-lg p-6 flex items-start gap-6 transition-all duration-300 border border-slate-700 hover:border-cyan-400/50 ${isHidden ? 'hidden' : ''}" data-cert-index="${i}">
+                                <div class="flex-shrink-0">
+                                    <svg class="w-12 h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">${cert.title}</h3>
+                                    <p class="text-gray-400 mb-2">${cert.issuer} - ${cert.date}</p>
+                                    <p class="text-gray-300 text-sm">${cert.description}</p>
+                                    ${credentialHTML}
+                                </div>
+                            </a>
+                        `;
+                        certsGrid.insertAdjacentHTML('beforeend', certCardHTML);
+                    });
+                    if (certificates.length <= initialCertsToShow) viewMoreBtn.style.display = 'none';
+                }
+
+                viewMoreBtn.addEventListener('click', () => {
+                    const isExpanding = viewMoreBtn.textContent === 'View More';
+                    certsGrid.querySelectorAll('[data-cert-index]').forEach((cert, index) => {
+                        if (index >= initialCertsToShow) cert.classList.toggle('hidden', !isExpanding);
+                    });
+                    viewMoreBtn.textContent = isExpanding ? 'View Less' : 'View More';
+                });
+
+                displayCertificates();
+            }
+            
+            // --- MOBILE MENU ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- CONTACT FORM SCHEDULE TOGGLE ---
+            const scheduleCheckbox = document.getElementById('schedule-checkbox');
+            const scheduleFields = document.getElementById('schedule-fields');
+            scheduleCheckbox.addEventListener('change', () => {
+                scheduleFields.classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
